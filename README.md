@@ -28,9 +28,8 @@ Features
 To use this music player, follow these simple steps:
 
 Clone the repository to your local machine:
-```
-git clone [https://github.com/SEBASCMB/Portfoliom.git]
-```
+
+git clone [https://github.com/SEBASCMB/Music-player.git]
 
 ### Usage
 
