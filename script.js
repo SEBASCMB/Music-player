@@ -1,17 +1,22 @@
-const image = document.getElementById("cover"),
-  title = document.getElementById("music-title"),
-  artist = document.getElementById("music-artist"),
-  currentTimeEl = document.getElementById("current-time"),
-  durationEl = document.getElementById("duration"),
-  progress = document.getElementById("progress"),
-  playerProgress = document.getElementById("player-progress"),
-  prevBtn = document.getElementById("prev"),
-  nextBtn = document.getElementById("next"),
-  playBtn = document.getElementById("play"),
-  background = document.getElementById("bg-img");
+// Select DOM elements
+const elements = {
+  image: document.getElementById("cover"),
+  title: document.getElementById("music-title"),
+  artist: document.getElementById("music-artist"),
+  currentTimeEl: document.getElementById("current-time"),
+  durationEl: document.getElementById("duration"),
+  progress: document.getElementById("progress"),
+  playerProgress: document.getElementById("player-progress"),
+  prevBtn: document.getElementById("prev"),
+  nextBtn: document.getElementById("next"),
+  playBtn: document.getElementById("play"),
+  background: document.getElementById("bg-img"),
+};
 
+// Create an Audio instance
 const music = new Audio();
 
+// Define an array of songs
 const songs = [
   {
     path: "assets/1.mp3",
@@ -33,9 +38,11 @@ const songs = [
   },
 ];
 
+// Initialize variables
 let musicIndex = 0;
 let isPlaying = false;
 
+// Function to toggle play/pause
 function togglePlay() {
   if (isPlaying) {
     pauseMusic();
@@ -44,63 +51,67 @@ function togglePlay() {
   }
 }
 
+// Function to play music
 function playMusic() {
   isPlaying = true;
-  // Change play button icon
-  playBtn.classList.replace("fa-play", "fa-pause");
-  // Set button hover title
-  playBtn.setAttribute("title", "Pause");
+  elements.playBtn.classList.replace("fa-play", "fa-pause");
+  elements.playBtn.setAttribute("title", "Pause");
   music.play();
 }
 
+// Function to pause music
 function pauseMusic() {
   isPlaying = false;
-  // Change pause button icon
-  playBtn.classList.replace("fa-pause", "fa-play");
-  // Set button hover title
-  playBtn.setAttribute("title", "Play");
+  elements.playBtn.classList.replace("fa-pause", "fa-play");
+  elements.playBtn.setAttribute("title", "Play");
   music.pause();
 }
 
+// Function to load music
 function loadMusic(song) {
   music.src = song.path;
-  title.textContent = song.displayName;
-  artist.textContent = song.artist;
-  image.src = song.cover;
-  background.src = song.cover;
+  elements.title.textContent = song.displayName;
+  elements.artist.textContent = song.artist;
+  elements.image.src = song.cover;
+  elements.background.src = song.cover;
 }
 
+// Function to change music
 function changeMusic(direction) {
   musicIndex = (musicIndex + direction + songs.length) % songs.length;
   loadMusic(songs[musicIndex]);
   playMusic();
 }
 
+// Function to update progress bar
 function updateProgressBar() {
   const { duration, currentTime } = music;
   const progressPercent = (currentTime / duration) * 100;
-  progress.style.width = `${progressPercent}%`;
+  elements.progress.style.width = `${progressPercent}%`;
 
   const formatTime = (time) => String(Math.floor(time)).padStart(2, "0");
-  durationEl.textContent = `${formatTime(duration / 60)}:${formatTime(
+  elements.durationEl.textContent = `${formatTime(duration / 60)}:${formatTime(
     duration % 60
   )}`;
-  currentTimeEl.textContent = `${formatTime(currentTime / 60)}:${formatTime(
-    currentTime % 60
-  )}`;
+  elements.currentTimeEl.textContent = `${formatTime(
+    currentTime / 60
+  )}:${formatTime(currentTime % 60)}`;
 }
 
+// Function to set progress bar on click
 function setProgressBar(e) {
-  const width = playerProgress.clientWidth;
+  const width = elements.playerProgress.clientWidth;
   const clickX = e.offsetX;
   music.currentTime = (clickX / width) * music.duration;
 }
 
-playBtn.addEventListener("click", togglePlay);
-prevBtn.addEventListener("click", () => changeMusic(-1));
-nextBtn.addEventListener("click", () => changeMusic(1));
+// Event listeners
+elements.playBtn.addEventListener("click", togglePlay);
+elements.prevBtn.addEventListener("click", () => changeMusic(-1));
+elements.nextBtn.addEventListener("click", () => changeMusic(1));
 music.addEventListener("ended", () => changeMusic(1));
 music.addEventListener("timeupdate", updateProgressBar);
-playerProgress.addEventListener("click", setProgressBar);
+elements.playerProgress.addEventListener("click", setProgressBar);
 
+// Initial load of the first song
 loadMusic(songs[musicIndex]);
