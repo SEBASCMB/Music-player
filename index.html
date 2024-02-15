@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- External stylesheets -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Page title -->
     <title>Music Player 🎧</title>
   </head>
 
   <body>
+    <!-- Background container -->
     <div class="background">
       <img src="" id="bg-img" />
     </div>
 
+    <!-- Main container for player -->
     <div class="container">
+      <!-- Player image container -->
       <div class="player-img">
         <img src="" class="active" id="cover" />
       </div>
 
-      <h2 id="music-title"></h2>
-      <h3 id="music-artist"></h3>
+      <!-- Music title and artist information -->
+      <div class="music-info">
+        <div class="title" id="music-title"></div>
+        <div class="artist" id="music-artist"></div>
+      </div>
 
+      <!-- Player progress bar -->
       <div class="player-progress" id="player-progress">
         <div class="progress" id="progress"></div>
         <div class="music-duration">
@@ -33,6 +45,7 @@
         </div>
       </div>
 
+      <!-- Player controls -->
       <div class="player-controls">
         <i class="fa-solid fa-backward" title="Previous" id="prev"></i>
         <i class="fa-solid fa-play play-button" title="Play" id="play"></i>
@@ -40,6 +53,7 @@
       </div>
     </div>
 
+    <!-- Script file -->
     <script src="script.js"></script>
   </body>
 </html>
