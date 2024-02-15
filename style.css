@@ -1,5 +1,7 @@
+/* Fuente importada de Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
+/* Estilos globales */
 html {
   box-sizing: border-box;
 }
@@ -14,6 +16,7 @@ body {
   justify-content: center;
 }
 
+/* Contenedor de fondo */
 .background {
   position: fixed;
   width: 200%;
@@ -37,6 +40,7 @@ body {
   transform: scale(1.1);
 }
 
+/* Contenedor principal */
 .container {
   background-color: #e7e7e7;
   height: 500px;
@@ -50,6 +54,7 @@ body {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
+/* Contenedor de imagen del reproductor */
 .player-img {
   width: 300px;
   height: 300px;
@@ -78,20 +83,22 @@ body {
   opacity: 1;
 }
 
-h2 {
+/* Estilos para los títulos */
+.title {
   font-size: 25px;
   text-align: center;
   font-weight: 500;
   margin: 10px 0 0;
 }
 
-h3 {
+.artist {
   font-size: 18px;
   text-align: center;
   font-weight: 500;
   margin: 10px 0 0;
 }
 
+/* Barra de progreso del reproductor */
 .player-progress {
   background-color: #fff;
   border-radius: 5px;
@@ -116,6 +123,7 @@ h3 {
   justify-content: space-between;
 }
 
+/* Controles del reproductor */
 .player-controls {
   position: relative;
   top: -15px;
@@ -123,6 +131,7 @@ h3 {
   width: 200px;
 }
 
+/* Iconos de Font Awesome */
 .fa-solid {
   font-size: 30px;
   color: #666;
